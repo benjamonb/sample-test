@@ -1,17 +1,31 @@
 SampleApp::Application.routes.draw do
+
+  # get "trades/new"
+  # get "trades/create"
+  # get "trades/update"
+  # get "trades/destroy"
+  
   resources :users
+  resources :sessions # , only: [:new, :create, :destroy]  #WARUM klappts das nicht "Route nicht gefunden?"
+  #resources :stocks
+  resources :trades
   
   root "static_pages#home"
   get "static_pages/home"
+  get "inventories/show"
   #get "static_pages/help"
   #get "static_pages/about"
   #get "users/new"
 
   match "/help", to: "static_pages#help", via: "get"
-  match "/new", to: "users#new", via: "get"
   match "/about", to: "static_pages#about", via: "get"
 
+  match "/portfolio", to: "inventories#show", via: "get"
+  match "/add_trade", to: "trades#new", via: "get"
 
+  match "/signin", to: "sessions#new", via: "get"
+  match "/signup", to: "users#new", via: "get"
+  match '/signout',  to: 'sessions#destroy', via: :delete
 
 
   # The priority is based upon order of creation: first created -> highest priority.

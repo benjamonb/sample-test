@@ -11,7 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140323084011) do
+ActiveRecord::Schema.define(version: 20140325100715) do
+
+  create_table "inventories", force: true do |t|
+    t.integer  "stock_id",   null: false
+    t.integer  "quantity",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "inventories", ["stock_id"], name: "stock_id", using: :btree
+
+  create_table "stocks", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "trades", force: true do |t|
+    t.string   "date"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "stock_id",   null: false
+    t.integer  "order_type"
+  end
+
+  add_index "trades", ["stock_id"], name: "stock_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -19,8 +45,10 @@ ActiveRecord::Schema.define(version: 20140323084011) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
+    t.string   "remember_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end
