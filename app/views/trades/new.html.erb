@@ -1,18 +1,31 @@
-<h1>Record Trade</h1>
+<h1>New Trade</h1>
 <div class="row">
 	<div class="span6 offset3">
 
 		<%= form_for(:trade, url: trades_path) do |f| %>
 			
 			
-			<%= f.label :stock_id %>
-			<%= f.collection_select :stock_id, Stock.order(:name),:id,:name %>
+<!-- 			#<%= f.label :stock_id %>
+			#<%= f.collection_select :stock_id, Stock.order(:name),:id,:name %> -->
 
 			<%= f.label :order_type %>
-			<%= f.select :order_type, [:buy, :sell] %>
+			<%= f.select :order_type, [:Buy, :Sell] %>
+
+			<%= f.label :price_index %>
+			<%= f.select :price_index, ["ULSD FOB ARA", "ICE Gasoil"] %>
 
 			<%= f.label :quantity %>
 			<%= f.text_field :quantity %>
+
+			<%= f.label "Unit of Count" %>
+			<%= f.select :unit_of_count, [:MT, :cbm] %>
+
+			<%= f.label :start_month %>
+			<%= f.select :start_month, [:Feb14, :Mar14, :Apr14, :May14, :Jun14, :Jul14] %>
+
+			<%= f.label :end_month %>
+			<%= f.select :end_month, [:Feb14, :Mar14, :Apr14, :May14, :Jun14, :Jul14] %>
+
 
 			<%= f.submit "Trade anlegen", class: "btn btn-large btn-primary" %>
 		<% end %>

@@ -1,0 +1,49 @@
+<h1>Local Prices</h1>
+
+<div class="row">
+	<div class="span6">
+		<h3>Diesel</h3> 
+		<table  class="table table-striped" >
+		<tr>
+			<th>Region</th>
+			<th>Low</th>
+			<th>High</th>
+			<th>Diff</th>
+		</tr>
+
+		<% @local_diesel_prices.each do |region, values_hash| %>
+			<tr>
+				<td><%= values_hash[:name] %> </td>
+				<td><%= values_hash[:low] %> </td>
+				<td><%= values_hash[:high] %> </td>
+				<td><%= (values_hash[:high] - values_hash[:low]) %> </td>	
+			</tr>
+		<% end %>
+
+		</table>
+	</div>
+
+	<div class="span6">
+		<p> <h3> Heating Oil</h3>
+
+		<table class="table table-striped">
+		<tr>
+			<th>Region</th>
+			<th>Low</th>
+			<th>High</th>
+			<th>Diff</th>
+		</tr>
+
+		<% @local_heatingoil_prices.each do |region, values_hash| %>
+			<tr>
+				<td><%= values_hash[:name] %> </td>
+				<td><%= values_hash[:low] %> </td>
+				<td><%= values_hash[:high] %> </td>
+				<td><%= (values_hash[:high] - values_hash[:low]) %> </td>	
+			</tr>
+		<% end %>
+
+		</table>
+	</div>
+</div>
+

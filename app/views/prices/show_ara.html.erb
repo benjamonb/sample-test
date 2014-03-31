@@ -1,0 +1,22 @@
+<h1>Ara Preise</h1>
+
+<table class="table table-striped">
+<tr>
+	<th>Rohstoff</th>
+	<th>Low</th>
+	<th>High</th>
+	<th>Diff</th>
+</tr>
+<%  @ara_prices.each do |commodity, values_hash| %>
+			<tr> 
+				<td> <%= values_hash[:name] %> </td>
+				<td> <%= values_hash[:low] %> </td>
+				<td> <%= values_hash[:high] %> </td>
+				<td> <%= values_hash[:high] - values_hash[:low]%> </td>
+			</tr> 
+
+<% end %>
+
+</table>
+
+

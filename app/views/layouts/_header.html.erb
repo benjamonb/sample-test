@@ -22,6 +22,20 @@
               </ul>
             </li>
 
+          <!-- Futures Services Dropdown Menü --> 
+          <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                FS <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Show ARA", show_ara_path %></li>
+              
+                <li>
+                  <li><%= link_to "Show local", show_local_path %></li>
+                </li>
+              </ul>
+            </li>
+
            <li> <%= link_to "Sign out", signout_path, method: "delete" %> </li>
            
           <% if signed_in? %>

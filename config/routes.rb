@@ -13,15 +13,20 @@ SampleApp::Application.routes.draw do
   root "static_pages#home"
   get "static_pages/home"
   get "inventories/show"
+
+  match "/show_local", to: "prices#show_local", via: "get"
   #get "static_pages/help"
   #get "static_pages/about"
   #get "users/new"
+
 
   match "/help", to: "static_pages#help", via: "get"
   match "/about", to: "static_pages#about", via: "get"
 
   match "/portfolio", to: "inventories#show", via: "get"
   match "/add_trade", to: "trades#new", via: "get"
+
+  match "/show_ara", to: "prices#show_ara", via: "get"
 
   match "/signin", to: "sessions#new", via: "get"
   match "/signup", to: "users#new", via: "get"
